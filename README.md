@@ -17,12 +17,15 @@ This third machine gives the lab a real system to scan, enumerate, and later exp
 
 4. **Switched to DVWA via Docker.** Chose DVWA (Damn Vulnerable Web Application) as the replacement target (*official images exist with multi-arch (including arm64) support*) avoiding the architecture issue entirely.
 5. **Pulled an ARM-compatible image.** Used `ghcr.io/digininja/dvwa:latest`, confirmed to support arm64.
+
 6. **Ran the container**, mapping it to port 8080 on the host:
 
 `
    docker run -d -p 8080:80 --name dvwa ghcr.io/digininja/dvwa:latest
 `
+
 7. **Verified locally first.** Loaded `http://localhost:8080` on the host, confirmed the DVWA login page rendered, logged in with default credentials, and initialized the database (Create/Reset Database).
+
 8. **Confirmed reachability from Kali.** From the Kali VM, ran:
    `
    nmap -p 8080 172.16.237.1
