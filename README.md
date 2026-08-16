@@ -2,7 +2,9 @@
 
 ## Objective
 
-Expand the home lab from two machines which are (1. Ubuntu Server as *hardened target*, 2. Kali as *attacker*) to three by adding an intentionally vulnerable target(DVWA). This third machine gives the lab a real system to scan, enumerate, and later exploit, rather than only monitoring and hardening.
+Expand the home lab from two machines (1. Ubuntu Server as *hardened target*, 2. Kali as *attacker*) to three by adding an intentionally vulnerable target(DVWA).
+
+This third machine gives the lab a real system to scan, enumerate, and later exploit.
 
 ## Steps Performed
 
