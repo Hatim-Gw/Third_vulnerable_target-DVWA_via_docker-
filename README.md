@@ -32,19 +32,8 @@ Expand the home lab from two machines which are (1. Ubuntu Server as *hardened t
 
 ## Problems Encountered
 
-**Problem:** Metasploitable 2's image is x86-only and cannot run on an Apple Silicon (ARM64) host under VirtualBox — VirtualBox errors out immediately at power-on rather than emulating.
+Metasploitable 2's image is x86-only and cannot run on an Apple Silicon (ARM64) host under VirtualBox — VirtualBox errors out immediately at power-on rather than emulating. 
 
-**Root cause:** Metasploitable 2 was built and last updated before ARM-based hosts were a mainstream target; no ARM64 build was ever produced, and VirtualBox on macOS ARM does not transparently emulate x86 guests.
+Pivoted to a target with native ARM64 support: DVWA running as a Docker container. This kept the lab goal intact (a reachable, intentionally vulnerable target on the network) while sidestepping the incompatibility.
 
-**Fix:** Rather than fight the architecture mismatch (e.g. via slow/unstable x86 emulation), pivoted to a target with native ARM64 support: DVWA running as a Docker container. This kept the lab goal intact (a reachable, intentionally vulnerable target on the network) while sidestepping the incompatibility.
 
-**Trade-off noted:** DVWA is web-application-focused rather than a full vulnerable OS like Metasploitable, so it offers a narrower attack surface (one web app vs. many misconfigured services). This is an acceptable trade for this stage of the lab, and full-OS-style enumeration can still be practiced against the existing Ubuntu Server target.
-
-## Result
-
-The home lab now has three layers:
-- **Ubuntu Server** — hardened target
-- **Kali Linux** — attacker
-- **DVWA (Docker)** — intentionally vulnerable target, reachable on port 8080 from Kali
-
-Scope for this block was reachability and initial recon only; exploitation of DVWA's vulnerabilities is covered later (Block 3 — PortSwigger Web Security Academy track).
